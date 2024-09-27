@@ -17,12 +17,9 @@ export class Item implements PrismaItem {
         allowNaN: false,
         maxDecimalPlaces: 2,
     })
-    @IsDecimal({
-        decimal_digits: '2',
-        force_decimal: false,
-    })
     @IsPositive()
     price: Decimal; // precio, Dato numérico con dos decimales. No se permite actualizar.
+    available: boolean;
     createdAt: Date;
     updatedAt: Date;
 }

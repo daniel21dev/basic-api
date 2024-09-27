@@ -21,7 +21,7 @@ model Item {
   id          String   @id @default(uuid())
   name        String
   description String
-  price       Decimal
+  price       Decimal @db.Decimal(10,2)
   available   Boolean @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
