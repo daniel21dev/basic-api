@@ -68,38 +68,9 @@ export class UsersService {
       where: filters,
       skip: (+page - 1) * +limit,
       take: +limit,
-      include: {
-        UserTask: {
-          select: {
-            task: {
-              select: {
-                status: true,
-                timeSpend: true,
-                cost: true,
-              },
-            },
-          },
-        },
-      },
     });
 
-    return users.map(({ UserTask, ...user }) => {
-      const tasks = UserTask.map(({ task }) => task);
-      const completedTasks = tasks.filter((task) => task.status === 'DONE');
-
-      delete user.password;
-
-      return {
-        ...user,
-        totalTasks: tasks.length,
-        totalTimeSpend: tasks.reduce((acc, task) => acc + task.timeSpend, 0),
-        totalTasksCompleted: completedTasks.length,
-        totalCostTasksCompleted: completedTasks.reduce(
-          (acc, task) => acc + task.cost,
-          0,
-        ),
-      };
-    });
+    return users
   }
 
   findOne(email: string) {

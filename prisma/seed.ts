@@ -19,6 +19,8 @@ async function main() {
     create: data,
     update: data,
   });
+  
+  console.log('Seed completed');
 }
 main()
   .then(async () => {
