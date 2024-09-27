@@ -19,6 +19,9 @@ export class Item implements PrismaItem {
     })
     @IsPositive()
     price: Decimal; // precio, Dato numérico con dos decimales. No se permite actualizar.
+    @IsString()
+    @MaxLength(10)
+    modelo: string; // modelo, alfanumérico de 10 caracteres. Se permite actualizar.
     available: boolean;
     createdAt: Date;
     updatedAt: Date;

@@ -22,6 +22,7 @@ model Item {
   name        String
   description String
   price       Decimal @db.Decimal(10,2)
+  modelo      String  @default("")
   available   Boolean @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
